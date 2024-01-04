@@ -44,12 +44,11 @@ const Header = ({ setType, setRatings, setCoordinates }) => {
       zIndex={101}
     >
       <Flex>
-      <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
           <InputGroup width={"35vw"} shadow="lg">
-            <InputRightElement
-              pointerEvents={"none"}
-              children={<BiSearch color="gray" fontSize={20} />}
-            />
+            <InputRightElement pointerEvents="none">
+              <BiSearch color="gray" fontSize={20} />
+            </InputRightElement>
             <Input
               type={"text"}
               placeholder="Search Google Map..."

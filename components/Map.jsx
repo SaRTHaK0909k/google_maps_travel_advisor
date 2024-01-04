@@ -7,15 +7,16 @@ import { BiX } from "react-icons/bi";
 const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
   const [isCard, setIsCard] = useState(false);
   const [cardData, setCardData] = useState(null);
+
   return (
-    <Box width={"full"} height={"full"}>
+    <Box width="full" height="full">
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_r_kiRyoul-zJ5Su9fHKbmzVmnv5SxfM" }}
         defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
         center={{ lat: 37.7749, lng: -122.4194 }}
         defaultZoom={10}
         margin={[50, 50, 50, 50]}
-        options={""}
+        options=""
         onChange={(e) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
@@ -25,62 +26,64 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
           setIsCard(true);
         }}
       >
-        {places?.map((place, i) => (
-          <Box
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
-            position={"relative"}
-            cursor="pointer"
-          >
-            <IoLocation color="red" fontSize={30} />
-          </Box>
-        ))}
+        {places?.map((place) => (
+  <Box
+    key={place.uniqueProperty}
+    lat={Number(place.latitude)}
+    lng={Number(place.longitude)}
+    position="relative"
+    cursor="pointer"
+  >
+    <IoLocation color="red" fontSize={30} />
+  </Box>
+))}
 
         {isCard && (
           <Box
-            width={"200px"}
-            height={"150px"}
-            bg={"whiteAlpha.900"}
-            position={"absolute"}
+            width="200px"
+            height="150px"
+            bg="whiteAlpha.900"
+            position="absolute"
             top={-12}
             left={0}
-            shadow={"lg"}
-            rounded={"lg"}
+            shadow="lg"
+            rounded="lg"
           >
             <Image
-              objectFit={"cover"}
-              width={"full"}
-              height={"120px"}
+              objectFit="cover"
+              width="full"
+              height="120px"
               rounded="lg"
               src={
                 cardData?.photo
                   ? cardData?.photo?.images?.large?.url
                   : "https://explorelompoc.com/wp-content/uploads/2021/06/food_placeholder.jpg"
               }
+              alt="img"
             />
 
             <Text
-              textTransform={"capitalize"}
-              width={"40"}
-              fontSize={"lg"}
-              fontWeight={"500"}
+              textTransform="capitalize"
+              width="40px"  // Adjusted this line
+              fontSize="lg"
+              fontWeight="500"
               isTruncated
             >
               {cardData.name}
             </Text>
 
             <Box
-              cursor={"pointer"}
-              position={"absolute"}
+              cursor="pointer"
+              position="absolute"
               top={2}
               right={2}
-              width={"30px"}
-              height={"30px"}
-              bg={"red.300"}
-              rounded={"full"}
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
+              width="30px"
+              height="30px"
+              bg="red.300"
+              rounded="full"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
               onClick={() => {
                 setIsCard(false);
               }}
