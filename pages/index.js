@@ -25,13 +25,16 @@ const Home = () => {
         setCoordinates({ lat: latitude, lng: longitude });
       }
     );
-  }, []);
+  }, [places]);
 
   useEffect(() => {
-    const filteredData = places.filter((place) => place.rating > ratings);
-    setFilteredPlaces(filteredData);
-    console.log({ ratings });
-  }, [ratings]);
+    if (places) {
+      const filteredData = places.filter((place) => place.rating > ratings);
+      setFilteredPlaces(filteredData);
+      console.log({ ratings });
+    }
+  }, [ratings, places]);
+  
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,7 +43,7 @@ const Home = () => {
       setPlaces(data);
       setIsLoading(false);
     });
-  }, [type, coordinates, bounds]);
+  }, [type, coordinates, bounds,places]);
 
   return (
     <Flex
@@ -53,7 +56,7 @@ const Home = () => {
       position={"relative"}
     >
       <Head>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=Your_API_KEY"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyA_r_kiRyoul-zJ5Su9fHKbmzVmnv5SxfM"></script>
       </Head>
 
       <Header

@@ -11,8 +11,8 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
     <Box width={"full"} height={"full"}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyA_r_kiRyoul-zJ5Su9fHKbmzVmnv5SxfM" }}
-        defaultCenter={{lat: 37.7749, lng: -122.4194}}
-        center={{lat: 37.7749, lng: -122.4194}}
+        defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
+        center={{ lat: 37.7749, lng: -122.4194 }}
         defaultZoom={10}
         margin={[50, 50, 50, 50]}
         options={""}
